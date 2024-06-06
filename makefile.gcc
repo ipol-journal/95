@@ -58,19 +58,19 @@ GEN_MSTENCILS_OBJECTS=$(GEN_MSTENCILS_SOURCES:.c=.o)
 all: dmcswl1 dmbilinear mosaic imdiff
 
 dmcswl1: $(DMCSWL1_OBJECTS)
-	$(CC) $(LDFLAGS) $(DMCSWL1_OBJECTS) -o $@
+	$(CC) $(DMCSWL1_OBJECTS) -o $@ $(LDFLAGS)
 
 dmbilinear: $(DMBILINEAR_OBJECTS)
-	$(CC) $(LDFLAGS) $(DMBILINEAR_OBJECTS) -o $@
+	$(CC) $(DMBILINEAR_OBJECTS) -o $@ $(LDFLAGS)
 
 mosaic: $(MOSAIC_OBJECTS)
-	$(CC) $(LDFLAGS) $(MOSAIC_OBJECTS) -o $@
+	$(CC) $(MOSAIC_OBJECTS) -o $@ $(LDFLAGS)
 
 imdiff: $(IMDIFF_OBJECTS)
-	$(CC) $(LDFLAGS) $(IMDIFF_OBJECTS) -o $@
+	$(CC) $(IMDIFF_OBJECTS) -o $@ $(LDFLAGS)
 
 gen_mstencils: $(GEN_MSTENCILS_OBJECTS)
-	$(CC) $(LDFLAGS) $(GEN_MSTENCILS_OBJECTS) -o $@
+	$(CC) $(GEN_MSTENCILS_OBJECTS) -o $@ $(LDFLAGS)
 
 mstencils.c: gen_mstencils mstencils.tem makefile.gcc
 	./gen_mstencils $(RADIUS) mstencils.tem mstencils.c
