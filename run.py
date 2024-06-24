@@ -50,8 +50,14 @@ with open('stdout_bilinear.txt', 'w') as stdout_bilinear:
 
 # Display estimate image contours as EPS
 if showcontours:
-    p4 = ['dmcswl1', '-p', str(args.pattern), '-s', 'input_0.png', 'contours.eps']
-    subprocess.run(p4) 
+    with open("algo_info.txt", "w") as file:
+        file.write("showcontours=1")
+        p4 = ['dmcswl1', '-p', str(args.pattern), '-s', 'input_0.png', 'contours.eps']
+        subprocess.run(p4) 
+else:
+    #write noshowcontours=1 in algo_info.txt
+    with open("algo_info.txt", "w") as file:
+        file.write("noshowcontours=1")
 
 # Trim the padding
 for m in ['mosaicked', 'bilinear', 'dmcswl1']:
